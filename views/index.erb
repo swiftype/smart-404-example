@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Swiftype Smart 404 Page Example</title>
+    <style>
+      body {
+        width: 800px;
+        margin: auto;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Swiftype Smart 404 Page Example</h1>
+
+    <p>
+      Welcome to the Swiftype smart 404 page example app. This application responds with a 404 for any path except this one.
+    </p>
+
+    <p>
+      On the 404 page, a search is automatically executed against the Swiftype Documentation based on the URL.
+      If there are results, they are shown. Either way, there is a search box for the user to find what they were looking for.
+      Check out the source code of <code>views/not_found.erb</code> to see how it works.
+    </p>
+
+    <p>Try some examples:</p>
+
+    <ul>
+      <li><a href="/documentation">/documentation</a></li>
+      <li><a href="/documentation/tutorials/wordpress-install-guide">/documentation/tutorials/wordpress-install-guide</a></li>
+      <li><a href="/crawl-limit">/recrawl-limit</a></li>
+      <li><a href="/asdf/123/foobar/baz/etc">a bunch of nonsense will not show any automatic results</a></li>
+    </ul>
+  </body>
+</html>

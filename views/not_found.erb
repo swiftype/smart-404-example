@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>404 Not Found</title>
+    <link type="text/css" rel="stylesheet" href="https://raw.github.com/swiftype/swiftype-search-jquery/master/search.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="https://raw.github.com/swiftype/swiftype-autocomplete-jquery/master/autocomplete.css" media="all" />
+    <style>
+      body {
+        width: 800px;
+        margin: auto;
+        margin-top: 20px;
+      }
+
+      #st-search-input {
+         font-size: 20px;
+         width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Oops, page not found.</h1>
+    <form>
+      <input type="text" id="st-search-input" placeholder="Search to find the page you're looking for...">
+    </form>
+
+    <div id="st-results-container"></div>
+
+    <p style="margin-top: 50px"><a href="/">Return to home page</a></p>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-search-jquery/master/jquery.swiftype.search.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-autocomplete-jquery/master/jquery.swiftype.autocomplete.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-search-jquery/master/jquery.ba-hashchange.min.js"></script>
+
+    <script type="text/javascript">
+      // Configure full-text search
+      $("#st-search-input").swiftypeSearch({
+        resultContainingElement: "#st-results-container",
+        engineKey: "5eMMdfkKCgz5wxyhR9RL"
+      });
+
+      // Configure autocomplete
+      $("#st-search-input").swiftype({
+        engineKey: "5eMMdfkKCgz5wxyhR9RL"
+      });
+
+      // Return a string made up of text from the path components, splitting on "/", "-", and "_"
+      // For example, a path like "/foo/bar/123-the-best_thing_ever" will return "foo bar 123 the best thing ever"
+      function getKeywordsFromPath() {
+        return window.location.pathname.split(/[\/-_]/).join(" ")
+      }
+
+      function renderAutomaticResults(data) {
+        var $resultContainer = $("#st-results-container");
+        $resultContainer.html("");
+        if (data['records']['page'].length > 0) {
+          $resultContainer.append("<h2>Suggested pages based on this URL</h2>");
+        }
+
+        $.each(data['records']['page'], function(index, result) {
+           var resultHTML = "<p><a href='" + result['url'] + "'>" +
+             (result['highlight']['title'] || result['title']) + "</a><br>" +
+             (result['highlight']['body'] || result['body'].substring(0, 300)) +
+             "</p>";
+           $resultContainer.append(resultHTML);
+        });
+      }
+
+      var searchParams = {engine_key: "5eMMdfkKCgz5wxyhR9RL",
+                          q: getKeywordsFromPath(),
+                          per_page: 10}
+
+      $.getJSON("http://api.swiftype.com/api/v1/public/engines/search.json?callback=?",
+                searchParams).success(renderAutomaticResults);
+    </script>
+  </body>
+</html>
