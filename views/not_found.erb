@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>404 Not Found</title>
+    <!-- Default Swiftype CSS styles. Download these and put them into your application. -->
     <link type="text/css" rel="stylesheet" href="https://raw.github.com/swiftype/swiftype-search-jquery/master/search.css" media="all" />
     <link type="text/css" rel="stylesheet" href="https://raw.github.com/swiftype/swiftype-autocomplete-jquery/master/autocomplete.css" media="all" />
     <style>
@@ -27,6 +28,7 @@
     <p style="margin-top: 50px"><a href="/">Return to home page</a></p>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Swiftype JavaScript libraries. Download these and put them into your application. -->
     <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-search-jquery/master/jquery.swiftype.search.js"></script>
     <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-autocomplete-jquery/master/jquery.swiftype.autocomplete.js"></script>
     <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-search-jquery/master/jquery.ba-hashchange.min.js"></script>
@@ -48,7 +50,10 @@
       function getKeywordsFromPath() {
         return window.location.pathname.split(/[\/-_]/).join(" ")
       }
-
+      
+      // Loop over the search results and append each one to the st-results-container div.
+      // This example is suited for crawler and WordPress-based search engines.
+      // For API-based engines, the fields will depend on your search engine's schema.
       function renderAutomaticResults(data) {
         var $resultContainer = $("#st-results-container");
         $resultContainer.html("");
@@ -65,6 +70,8 @@
         });
       }
 
+      // Perform a search using Swiftype's JSONP API and call renderAutomaticResults when it finishes.
+      // Replace the engine_key with your own; the one searches the Swiftype documentation.
       var searchParams = {engine_key: "5eMMdfkKCgz5wxyhR9RL",
                           q: getKeywordsFromPath(),
                           per_page: 10}
