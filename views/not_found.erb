@@ -2,8 +2,8 @@
   <head>
     <title>404 Not Found</title>
     <!-- Default Swiftype CSS styles. Download these and put them into your application. -->
-    <link type="text/css" rel="stylesheet" href="https://raw.github.com/swiftype/swiftype-search-jquery/master/search.css" media="all" />
-    <link type="text/css" rel="stylesheet" href="https://raw.github.com/swiftype/swiftype-autocomplete-jquery/master/autocomplete.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="/search.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="/autocomplete.css" media="all" />
     <style>
       body {
         width: 800px;
@@ -29,9 +29,9 @@
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!-- Swiftype JavaScript libraries. Download these and put them into your application. -->
-    <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-search-jquery/master/jquery.swiftype.search.js"></script>
-    <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-autocomplete-jquery/master/jquery.swiftype.autocomplete.js"></script>
-    <script type="text/javascript" src="https://raw.github.com/swiftype/swiftype-search-jquery/master/jquery.ba-hashchange.min.js"></script>
+    <script type="text/javascript" src="/jquery.swiftype.search.js"></script>
+    <script type="text/javascript" src="/jquery.swiftype.autocomplete.js"></script>
+    <script type="text/javascript" src="/jquery.ba-hashchange.min.js"></script>
 
     <script type="text/javascript">
       // Configure full-text search
@@ -50,7 +50,7 @@
       function getKeywordsFromPath() {
         return window.location.pathname.split(/[\/-_]/).join(" ")
       }
-      
+
       // Loop over the search results and append each one to the st-results-container div.
       // This example is suited for crawler and WordPress-based search engines.
       // For API-based engines, the fields will depend on your search engine's schema.
